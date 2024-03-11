@@ -9,11 +9,11 @@
         <div class="max-w-2/2 mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <div class="flex justify-evely  items-center">
+                    <div class="flex justify-center items-center">
                         {{-- card --}}
                         <div class="w-1/2 h-full m-2 bg-[#f2f2f2] rounded-lg">
                             <h1 class="text-xl font-bold p-2">Estudiantes</h1>
-                            <div class="flex justify-center items-center">
+                            <div class="flex justify-evenly items-center">
                                 <img src="https://imgs.search.brave.com/qiUNgmZj2hfm1TZuqrljKLlKQx8ZiN6aZkWbhPN4W1M/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9wbmcu/cG5ndHJlZS5jb20v/cG5nLXZlY3Rvci8y/MDIyMDYxMC9vdXJt/aWQvcG5ndHJlZS1z/YWQtZmlyZWQtc3R1/ZGVudC1pY29uLXBu/Zy1pbWFnZV80OTU2/Mzc3LnBuZw" class="w-1/2 hidden sm:block" alt="student">
                                 <div class="w-56">
                                     <canvas id="myChart" class=""></canvas>
@@ -46,7 +46,7 @@
                 labels: ['activos'],
                 datasets: [{
                     label: 'activos',
-                    data: [10],
+                    data: [{{$students}}],
                     backgroundColor: [
                         '#5d933d',
                     ],
@@ -64,7 +64,7 @@
                 labels: ['activos'],
                 datasets: [{
                     label: 'activos',
-                    data: [5000,1000],
+                    data: [200,500],
                     backgroundColor: [
                         '#5d933d',
                         '#780d00'

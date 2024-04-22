@@ -25,8 +25,11 @@
                     {{-- <x-nav-link :href="route('showStudents')" :active="request()->routeIs('showStudents')">
                         {{ __('Ver estudiante') }}
                     </x-nav-link>   --}}
-                    {{-- <x-nav-link :href="route('showStudents', $student->id)" :active="request()->routeIs('showStudents')">
-                        {{ __('Ver estudiante') }}
+                    <x-nav-link :href="route('activities')" :active="request()->routeIs('activities')">
+                        {{ __('Crear actividades') }}
+                    </x-nav-link> 
+                    {{-- <x-nav-link :href="route('students.cardex', $student->id)" :active="request()->routeIs('cadex')">
+                        {{ __('Generar pdf') }}
                     </x-nav-link>                     --}}
                 </div>
             </div>

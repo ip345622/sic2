@@ -45,6 +45,7 @@ class StudentController extends Controller
         $student = Students::find($id);
         return view('editStudent', compact('student'));
     }
+    
     public function update(Request $request, $id): RedirectResponse
     {
         $student = Students::find($id);
@@ -55,12 +56,10 @@ class StudentController extends Controller
     //* create student profile
     public function store(Request $request)
     {
-        // Verificar si la solicitud es AJAX y si la validación del cliente ya falló
         if ($request->ajax() && $request->session()->has('errors')) {
             return response()->json(['errors' => $request->session()->get('errors')]);
         }
 
-        // Validar los campos con Laravel
         $validator = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/u',
             'lastName' => 'required|regex:/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/u',
@@ -73,7 +72,6 @@ class StudentController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // Si la validación falla en el servidor y la solicitud no es AJAX, redirige de vuelta con los errores
             if (!$request->ajax()) {
                 return redirect()
                     ->route('student')
@@ -81,7 +79,6 @@ class StudentController extends Controller
                     ->withInput();
             }
 
-            // Si la solicitud es AJAX, devuelve un JSON con los errores
             return response()->json(['errors' => $validator->errors()->toArray()]);
         }
 
@@ -96,15 +93,12 @@ class StudentController extends Controller
         $student->email = $request->input('email');
         $student->password = Hash::make($request->input('password'));
 
-        // Guardar el estudiante en la base de datos
         $student->save();
 
-        // Si la solicitud no es AJAX, redirige a la página de índice con un mensaje de éxito
         if (!$request->ajax()) {
             return redirect()->route('student')->with('success', 'Estudiante creado exitosamente');
         }
 
-        // Si la solicitud es AJAX, devuelve un JSON con el mensaje de éxito
         return response()->json(['success' => 'Estudiante creado exitosamente']);
     }
 
@@ -124,18 +118,7 @@ class StudentController extends Controller
     //     $student=User::find($id);
     //     return view('pages.showStudents',compact('student'));
     // }
-    // tODO: EDIT STUDENT
-    // public function editStudent($id){
-    //     $student=User::find($id);
-    //     return view('pages.editStudent',compact('student'));
-    // }
-    // TODO: UPDATE STUDENT
-    // public function updateStudent(StudentRequest $request,$id):RedirectResponse {
-    //     $student=Student::find($id);
-    //     // ? Mostrar en consola
-    //     dd($student);
-    //     $student->update($request->all());
-    //     return redirect()->route('student.index')->with('notificacion','Estudiante editado correctamente');
-    // }
+
+
 
 }

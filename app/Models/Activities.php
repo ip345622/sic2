@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Activities extends Model
 {
     use HasFactory;
+    protected $fillable = ['activity_name', 'units_id', 'percentage'];
 }
